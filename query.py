@@ -1,6 +1,6 @@
 import asyncpg
 import asyncio
-# from asyncpg import Record
+from asyncpg import Record
 from typing import List
 
 
@@ -15,7 +15,7 @@ async def main():
     await conn.execute("INSERT INTO brand VALUES(DEFAULT, 'Seven')")
 
     brand_query = 'SELECT brand_id, brand_name FROM brand'
-    results: List[asyncpg.Record] = await conn.fetch(brand_query)
+    results: List[Record] = await conn.fetch(brand_query)
     for brand in results:
         print(type(brand))
         print(f'id: {brand["brand_id"]}, name: {brand["brand_name"]}')
