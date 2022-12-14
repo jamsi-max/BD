@@ -3,7 +3,9 @@ import asyncio
 from asyncpg import Record
 from typing import List
 
+from tools import async_timed
 
+@async_timed()
 async def main():
     conn = await asyncpg.connect(host='127.0.0.1',
                                  port=5432,
