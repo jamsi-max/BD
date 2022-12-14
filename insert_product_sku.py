@@ -1,7 +1,7 @@
 import asyncpg
 import asyncio
 from random import randint, sample
-from query_insert_brand import load_common_word
+from insert_brand import load_common_word
 
 
 def gen_products(common_word: list[str],
