@@ -10,7 +10,7 @@ def gen_products(common_word: list[str],
                  products_to_create: int) -> list[tuple[str, int]]:
     products: list = []
     for _ in range(products_to_create):
-        description:  list = [common_word[index] for index in sample(range(1000), 10)]
+        description:  list[str] = [common_word[index].strip() for index in sample(range(1000), 10)]
         brand_id: int = randint(brand_id_start, brand_id_end)
         products.append((" ".join(description), brand_id))
     return products
@@ -37,13 +37,13 @@ async def main() -> None:
                                  database='products')
 
     product_tuples: list[tuple[str, int]] = gen_products(common_words,
-                                                         brand_id_start=7,
-                                                         brand_id_end=106,
+                                                         brand_id_start=1,
+                                                         brand_id_end=100,
                                                          products_to_create=1000)
     await conn.executemany('INSERT INTO product VALUES (DEFAULT, $1, $2)', product_tuples)
 
-    sku_tuples: list[tuple[int, int, int]] = gen_sku(product_id_start=56,
-                                                     product_id_end=1_155,
+    sku_tuples: list[tuple[int, int, int]] = gen_sku(product_id_start=1,
+                                                     product_id_end=1_000,
                                                      skus_to_create=100_000)
     await conn.executemany('INSERT INTO sku VALUES (DEFAULT, $1, $2, $3)', sku_tuples)
 

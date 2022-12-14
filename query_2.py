@@ -27,6 +27,12 @@ async def main():
         JOIN product_color as pc ON pc.product_color_id = s.product_color_id
         JOIN product_size as ps ON ps.product_size_id = s.product_size_id
         WHERE p.product_id = 100"""
+    # query = \
+    #     """
+    #     SELECT
+    #     product_name
+    #     FROM product
+    #     WHERE product_id = 100"""
     results: List[Record] = await conn.fetch(query)
     # print(results)
     for r in results:
