@@ -16,3 +16,6 @@ def async_timed():
                 print(f'-> {func} finished time: {total:.4f} sec')
         return wrapped
     return wrapper
+
+if __name__ == '__main__':
+    async_timed()

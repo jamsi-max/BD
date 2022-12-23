@@ -1,4 +1,6 @@
 import asyncio
+import time
+
 import asyncpg
 import logging
 
